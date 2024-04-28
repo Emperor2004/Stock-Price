@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import root_mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 
 class StockPricePredictor:
@@ -26,10 +26,10 @@ class StockPricePredictor:
 
         # Evaluating the model
         y_pred = self.model.predict(X_test)
-        mse = mean_squared_error(y_test, y_pred)
-        r = r2_score(y_pred= y_pred, y_true= y_test)
-        print("Mean Squared Error:", mse)
-        print("R2 Score:", r)
+        rmse = root_mean_squared_error(y_test, y_pred)
+        r2 = r2_score(y_pred, y_test)
+        print("Root Mean Squared Error:", rmse)
+        print("R2 Score:", r2)
 
     def predict_price(self, days_ahead):
         if self.model is None:
